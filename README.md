@@ -1,7 +1,7 @@
 ## Summary
 🎴🎴🎴🎴
 
-Simulate board game mechanics. 
+Simulate board game card mechanics. 
 
 Supports
 Shuffle, Cut, Deal, Insert randomly.
@@ -42,6 +42,9 @@ public class Game: Monobehaviour
         //create a deck from the Cards in the scene
         m_mainDeck = new Deck<Card>(new List<Card>( GetComponents<Card>() ) );
         
+        m_mainDeck.Shuffle();
+        var jokers = m_mainDeck.Seperate((card)=>card.name.Contains("joker"));
+
         //deal 2 cards to each player.
         m_hands = m_mainDeck.Deal(4,2);
     }
